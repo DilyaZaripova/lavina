@@ -16,24 +16,24 @@ ActiveRecord::Schema.define(version: 20170503125445) do
   enable_extension "plpgsql"
 
   create_table "applies", force: :cascade do |t|
-    t.integer  "job_id",                     null: false
-    t.integer  "geek_id",                    null: false
-    t.boolean  "read",       default: false
-    t.boolean  "invited",    default: false
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.integer  "job_id"
+    t.integer  "geek_id"
+    t.boolean  "read"
+    t.boolean  "invited"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "companies", force: :cascade do |t|
-    t.string   "name",       null: false
-    t.string   "location",   null: false
+    t.string   "name"
+    t.string   "location"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "geeks", force: :cascade do |t|
-    t.string   "name",       null: false
-    t.string   "stack",      null: false
+    t.string   "name"
+    t.string   "stack"
     t.text     "resume"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

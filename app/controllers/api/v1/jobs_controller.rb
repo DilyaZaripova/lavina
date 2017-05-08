@@ -16,7 +16,7 @@ class Api::V1::JobsController < ApplicationController
       }
     end
   end
-
+  #POST
   def new
     @job = Job.new
   end
@@ -24,12 +24,17 @@ class Api::V1::JobsController < ApplicationController
   def edit
     @job = Job.find(params[:id])
   end
-
+  #POST
   def create
     @job = Job.new(job_params)
 
     if @job.save
       render @jobs
+    else
+      render json: {
+          error: 'Not such record in DataBase, check params',
+          status: :not_found,
+      }
     end
   end
 
@@ -44,7 +49,7 @@ class Api::V1::JobsController < ApplicationController
       }
     end
   end
-
+  #DELETE
   def destroy
     @job = Job.find(params[:id])
     if @job.destroy
