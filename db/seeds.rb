@@ -7,21 +7,44 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 Company.delete_all
 Company.reset_pk_sequence
-Company.create!(
-    [
-        {name: 'Company_0', location: 'Location_0'},
-        {name: 'Company_1', location: 'Location_1'},
-        {name: 'Company_2', location: 'Location_2'},
-        {name: 'Company_3', location: 'Location_3'}
-    ]
-)
+Company.create([
+                   {name:'MoGo', location: 'New York'},
+                   {name: 'Wirkkle', location: 'London'},
+                   {name:'Artesis', location: 'Saint-Petersburg'},
+                   {name:'BuildEmpire', location: 'London'},
+               ])
+
 Job.delete_all
 Job.reset_pk_sequence
-Job.create!(
-    [
-        {name: 'Job_0', place: 'Place_0', company_id: 1},
-        {name: 'Job_1', place: 'Place_1', company_id: 1},
-        {name: 'Job_2', place: 'Place_2', company_id: 2},
-        {name: 'Job_3', place: 'Place_3', company_id: 3}
-    ]
-)
+Job.create([
+               {name:'Sinatra React', place:'Remote', company_id:1},
+               {name:'Ruby React', place:'Contract', company_id:2},
+               {name:'React', place:'Remote', company_id:3},
+               {name:'Node React', place:'Permanent', company_id:1},
+               {name:'Ruby on Rails', place:'Remote', company_id:4},
+               {name:'Node', place:'Permanent', company_id:4},
+               {name:'Javascript CSS HTML', place:'Permanent', company_id:4},
+           ])
+
+Geek.delete_all
+Geek.reset_pk_sequence
+Geek.create([
+                { name: "Mike", stack: "Sinatra React", resume: true },
+                { name: "Alex", stack: "Ruby React", resume: true },
+                { name: "Martha", stack: "Rails", resume: false },
+                { name: "Juri", stack: "Java", resume: true },
+                { name: "Andrew", stack: "PHP", resume: false },
+                { name: "Nina", stack: "Node", resume: true },
+                { name: "Bob", stack: "Front end", resume: true },
+                { name: "Kate", stack: "PHP", resume: false },
+                { name: "Boris", stack: "Full stack", resume: true },
+            ])
+
+Apply.delete_all
+Apply.reset_pk_sequence
+Apply.create([
+                 { job_id: 1, geek_id: 1, read: true, invited: true },
+                 { job_id: 1, geek_id: 2, read: false, invited: false },
+                 { job_id: 5, geek_id: 5, read: true, invited: false },
+                 { job_id: 6, geek_id: 8, read: false, invited: false },
+             ])
