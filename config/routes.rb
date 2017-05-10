@@ -31,10 +31,14 @@ Rails.application.routes.draw do
           resources :applies
         end
       end
+
+      match 'destroy', to: 'companies#destroy', via: :post
+
       resources :geeks do
         resources :applies
       end
       resources :applies
     end
   end
+
 end

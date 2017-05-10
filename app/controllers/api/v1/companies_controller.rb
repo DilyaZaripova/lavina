@@ -1,4 +1,5 @@
 class Api::V1::CompaniesController < ApplicationController
+  before_action :set_company, only: [:show, :update]
 
   def index
     @companies = Company.all
@@ -22,7 +23,7 @@ class Api::V1::CompaniesController < ApplicationController
     @company = Company.new
   end
 
-  def edit
+  def set_company
     @company = Company.find(params[:id])
   end
   #POST
@@ -52,13 +53,26 @@ class Api::V1::CompaniesController < ApplicationController
   end
   #DELETE
   def destroy
+    id = params[:id]
     @company = Company.find(params[:id])
-    if @company.destroy
-      render json: {companies: @companies}
+    #@company.destroy
+    #  render json: {companies: @companies}
+
+    if @company.deleted
+      render json: {
+          deleted_company: [],
+          companies: @companies,
+      }
     else
-      render json: {error: 'Not delete.'}
+      @company.deleted_company
+        render json: {
+          deleted_company: @company,
+          code: 200,
+          status: :success,
+        }
     end
   end
+  #необходимо пометить удаленные(без удаления из базы)
 
   private
   def company_params

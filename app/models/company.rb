@@ -5,4 +5,8 @@ class Company < ApplicationRecord
   validates_associated :jobs
 
   has_many :jobs
+
+  def deleted_company
+    self.update_attribute(:deleted, true)
+  end
 end
